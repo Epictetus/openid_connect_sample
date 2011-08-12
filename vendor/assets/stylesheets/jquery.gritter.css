@@ -27,14 +27,14 @@
   margin:0 0 10px 0;
 }
 .gritter-top {
-  background:url(/assets/jquery.gritter/gritter.png) no-repeat left -30px;
+  background:url(jquery.gritter/gritter.png) no-repeat left -30px;
   height:10px;
 }
 .hover .gritter-top {
   background-position:right -30px;
 }
 .gritter-bottom {
-  background:url(/assets/jquery.gritter/gritter.png) no-repeat left bottom;
+  background:url(jquery.gritter/gritter.png) no-repeat left bottom;
   height:8px;
   margin:0;
 }
@@ -43,7 +43,7 @@
 }
 .gritter-item {
   display:block;
-  background:url(/assets/jquery.gritter/gritter.png) no-repeat left -40px;
+  background:url(jquery.gritter/gritter.png) no-repeat left -40px;
   color:#eee;
   padding:2px 11px;
   font-size: 13px;
@@ -60,7 +60,7 @@
   position:absolute;
   top:5px;
   left:3px;
-  background:url(/assets/jquery.gritter/gritter.png) no-repeat left top;
+  background:url(jquery.gritter/gritter.png) no-repeat left top;
   cursor:pointer;
   width:30px;
   height:30px;
