@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc5'
-gem 'sqlite3'
 gem 'jquery-rails'
 gem 'fb_graph', '2.0.0.alpha'
 gem 'rack-oauth2'
@@ -16,6 +15,14 @@ group :assets do
   gem 'uglifier'
 end
 
+group :development, :test do
+  gem 'sqlite3'
+end
+
 group :test do
   gem 'turn', :require => false
+end
+
+group :production do
+  gem 'pg'
 end
