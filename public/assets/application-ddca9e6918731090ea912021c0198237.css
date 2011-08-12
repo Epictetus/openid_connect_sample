@@ -1,0 +1,355 @@
+/* the norm */
+#gritter-notice-wrapper {
+  position:fixed;
+  top:20px;
+  right:20px;
+  width:301px;
+  z-index:9999;
+}
+#gritter-notice-wrapper.top-left {
+  left: 20px;
+  right: auto;
+}
+#gritter-notice-wrapper.bottom-right {
+  top: auto;
+  left: auto;
+  bottom: 20px;
+  right: 20px;
+}
+#gritter-notice-wrapper.bottom-left {
+  top: auto;
+  right: auto;
+  bottom: 20px;
+  left: 20px;
+}
+.gritter-item-wrapper {
+  position:relative;
+  margin:0 0 10px 0;
+}
+.gritter-top {
+  background:url(/assets/jquery.gritter/gritter.png) no-repeat left -30px;
+  height:10px;
+}
+.hover .gritter-top {
+  background-position:right -30px;
+}
+.gritter-bottom {
+  background:url(/assets/jquery.gritter/gritter.png) no-repeat left bottom;
+  height:8px;
+  margin:0;
+}
+.hover .gritter-bottom {
+  background-position: bottom right;
+}
+.gritter-item {
+  display:block;
+  background:url(/assets/jquery.gritter/gritter.png) no-repeat left -40px;
+  color:#eee;
+  padding:2px 11px;
+  font-size: 13px;
+  font-family:verdana;
+}
+.hover .gritter-item {
+  background-position:right -40px;
+}
+.gritter-item p {
+  padding:0;
+  margin:0;
+}
+.gritter-close {
+  position:absolute;
+  top:5px;
+  left:3px;
+  background:url(/assets/jquery.gritter/gritter.png) no-repeat left top;
+  cursor:pointer;
+  width:30px;
+  height:30px;
+}
+.gritter-title {
+  font-size:16px;
+  font-weight:bold;
+  padding:0 0 7px 0;
+  display:block;
+  text-shadow:1px 1px #000; /* Not supported by IE :( */
+}
+.gritter-image {
+  width:48px;
+  height:48px;
+  float:left;
+}
+.gritter-with-image {
+  width:220px;
+  float:right;
+}
+/*	Less Framework 4
+	http://lessframework.com
+	by Joni Korpi
+	License: http://creativecommons.org/licenses/MIT/	*/
+
+
+/*	Resets
+	------	*/
+
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
+img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figure, figcaption, hgroup, 
+menu, footer, header, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+article, aside, canvas, figure, figure img, figcaption, hgroup,
+footer, header, nav, section, audio, video {
+	display: block;
+}
+
+a img {border: 0;}
+
+
+
+/*	Typography presets
+	------------------	*/
+
+.gigantic {
+	font-size: 110px;
+	line-height: 120px;
+}
+
+.huge, h1 {
+	font-size: 24px;
+	line-height: 32px;
+}
+
+.large, h2 {
+	font-size: 20px;
+	line-height: 28px;
+}
+
+.bigger, h3 {
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.big, h4 {
+	font-size: 16px;
+	line-height: 24px;
+}
+
+body {
+	font: 16px/24px Georgia, serif;
+}
+
+.small, small {
+	font-size: 13px;
+	line-height: 18px;
+}
+
+
+/*		Default Layout: 992px. 
+		Gutters: 24px.
+		Outer margins: 48px.
+		Leftover space for scrollbars @1024px: 32px.
+-------------------------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8      9      10
+px      68    160    252    344    436    528    620    712    804    896    */
+
+body {
+	width: 896px;
+	margin: 0 auto;
+	padding: 72px 48px 84px;
+	background: rgb(232,232,232);
+	color: rgb(60,60,60);
+	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+}
+
+
+
+/*		Tablet Layout: 768px.
+		Gutters: 24px.
+		Outer margins: 28px.
+		Inherits styles from: Default Layout.
+-----------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	
+	body {
+		width: 712px;
+		padding: 48px 28px 60px;
+	}
+}
+
+
+
+/*		Mobile Layout: 320px.
+		Gutters: 24px.
+		Outer margins: 34px.
+		Inherits styles from: Default Layout.
+---------------------------------------------
+cols    1     2      3
+px      68    160    252    */
+
+@media only screen and (max-width: 767px) {
+	
+	body {
+		width: 252px;
+		padding: 48px 34px 60px;
+	}
+	
+}
+
+
+
+/*		Wide Mobile Layout: 480px.
+		Gutters: 24px.
+		Outer margins: 22px.
+		Inherits styles from: Default Layout, Mobile Layout.
+------------------------------------------------------------
+cols    1     2      3      4      5
+px      68    160    252    344    436    */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	
+	body {
+		width: 436px;
+		padding: 36px 22px 48px;
+	}
+	
+}
+
+
+/*	Retina media query.
+	Overrides styles for devices with a 
+	device-pixel-ratio of 2+, such as iPhone 4.
+-----------------------------------------------    */
+
+@media 
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min-device-pixel-ratio: 2) {
+	
+	body {
+	
+	}
+	
+}
+/*
+*/
+/* colors */
+/* border */
+/* mixin */
+/* colors */
+/* border */
+/* mixin */
+/* line 3, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+h1, h2, h3, h4, strong, b {
+  font-weight: 600;
+}
+
+/* line 6, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+a {
+  color: #666666;
+  text-decoration: none;
+}
+/* line 9, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+a:hover {
+  color: #333333;
+}
+
+/* line 13, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+ul {
+  list-style: none;
+}
+
+/* line 17, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+input[type=submit] {
+  -webkit-box-shadow: white 0px 0.08em 0.2em 1px inset;
+  background: white -webkit-gradient(linear, left top, left bottom, from(white), to(#b6b6b6));
+  border: 1px solid #b6b6b6;
+  border-radius: 8px;
+  color: #777777;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5em;
+  padding: 0.3em 1em;
+  text-shadow: white 0px 1px 1px;
+  vertical-align: middle;
+}
+/* line 34, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+input[type=submit]:hover, input[type=submit]:focus {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#aaaaaa));
+}
+/* line 41, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+input[type=submit]:active {
+  -webkit-box-shadow: #b6b6b6 0px 0.08em 0.2em 1px inset;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#cccccc));
+}
+/* line 51, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+input:not([type=submit]):valid {
+  background: #dfd;
+}
+/* line 54, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+input:not([type=submit]):invalid {
+  background: #fdd;
+}
+
+/* line 61, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+body > header {
+  background: url(/assets/logo.png) no-repeat top left;
+  color: #666666;
+  height: 60px;
+  padding: 3px 0 0 70px;
+}
+/* line 66, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+body > header a {
+  color: #333333;
+}
+/* line 68, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+body > header a:hover {
+  color: #666666;
+}
+/* line 73, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+body > footer {
+  color: #666666;
+  font-size: 13px;
+  text-align: right;
+}
+/* line 79, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+body > footer ul li {
+  display: inline-block;
+}
+/* line 81, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+body > footer ul li:not(:first-child) {
+  margin-left: 15px;
+}
+/* line 86, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+body > footer input[type=submit] {
+  font-size: 13px;
+}
+@media only screen and (max-width: 479px) {
+  /* line 73, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+  body > footer {
+    font-size: 11px;
+  }
+}
+/* line 93, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/layout.css.scss */
+body > .main {
+  padding: 30px 0;
+}
+/* line 27, /Users/nov/Documents/Private/dev/git/openid_connect_sample/app/assets/stylesheets/_common_variables.css.scss */
+body > .main:after {
+  clear: both;
+  content: ' ';
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
