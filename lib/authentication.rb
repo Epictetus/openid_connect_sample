@@ -1,18 +1,18 @@
 module Authentication
 
-  class Unauthorized < StandardError; end
+  class AuthenticationRequired < StandardError; end
+  class AnonymousAccessRequired < StandardError; end
 
-  def self.included(base)
-    base.send(:include, Authentication::HelperMethods)
-    base.send(:include, Authentication::ControllerMethods)
+  def self.included(klass)
+    klass.send :include, Authentication::Helper
+    klass.send :before_filter, :optional_authentication
+    klass.send :rescue_from, AuthenticationRequired,  with: :authentication_required!
+    klass.send :rescue_from, AnonymousAccessRequired, with: :anonymous_access_required!
   end
 
-  module HelperMethods
-
+  module Helper
     def current_account
-      @current_account ||= Account.find(session[:current_account])
-    rescue ActiveRecord::RecordNotFound
-      nil
+      @current_account
     end
 
     def current_token
@@ -22,32 +22,47 @@ module Authentication
     def authenticated?
       !current_account.blank?
     end
-
   end
 
-  module ControllerMethods
+  def authentication_required!(e)
+    redirect_to root_url, flash: {
+      error: e.message || 'Authentication Required'
+    }
+  end
 
-    def require_authentication
+  def anonymous_access_required!(e)
+    redirect_to dashboard_url
+  end
+
+  def optional_authentication
+    if session[:current_account]
       authenticate Account.find_by_id(session[:current_account])
-    rescue Unauthorized => e
-      redirect_to root_url and return false
     end
+  rescue ActiveRecord::RecordNotFound
+    unauthenticate!
+  end
 
-    def require_access_token
-      @current_token = AccessToken.find_by_token request.env[Rack::OAuth2::Server::Resource::ACCESS_TOKEN]
-      raise Rack::OAuth2::Server::Resource::Bearer::Unauthorized unless @current_token
-    end
+  def require_authentication
+    raise AuthenticationRequired.new unless authenticated?
+  end
 
-    def authenticate(account)
-      raise Unauthorized unless account
+  def require_anonymous_access
+    raise AnonymousAccessRequired.new if authenticated?
+  end
+
+  def require_access_token
+    @current_token = AccessToken.find_by_token request.env[Rack::OAuth2::Server::Resource::ACCESS_TOKEN]
+    raise Rack::OAuth2::Server::Resource::Bearer::Unauthorized unless @current_token
+  end
+
+  def authenticate(account)
+    if account
+      @current_account = account
       session[:current_account] = account.id
     end
-
-    def unauthenticate
-      current_account.destroy
-      @current_account = session[:current_account] = nil
-    end
-
   end
 
+  def unauthenticate!
+    @current_account = session[:current_account] = nil
+  end
 end

@@ -1,4 +1,4 @@
-class Auth::Facebook < ActiveRecord::Base
+class Facebook < ActiveRecord::Base
   belongs_to :account
 
   extend ActiveSupport::Memoizable
@@ -16,7 +16,7 @@ class Auth::Facebook < ActiveRecord::Base
         {
           client_id:     ENV['fb_client_id'],
           client_secret: ENV['fb_client_secret'],
-          scope:         ENV['scope']
+          scope:         ENV['fb_scope']
         }
       else
         YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env].symbolize_keys
