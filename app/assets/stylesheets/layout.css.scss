@@ -59,7 +59,7 @@ input {
 
 body {
   &> header {
-    background: url(logo.png) no-repeat top left;
+    background: image-url("logo.png") no-repeat top left;
     color: $gray;
     height: 60px;
     padding: 3px 0 0 70px;
