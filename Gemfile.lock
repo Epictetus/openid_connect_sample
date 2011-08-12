@@ -47,7 +47,7 @@ GEM
     erubis (2.7.0)
     execjs (1.2.4)
       multi_json (~> 1.0)
-    fb_graph (1.9.5)
+    fb_graph (2.0.0.alpha)
       httpclient (>= 2.2.0.2)
       rack-oauth2 (>= 0.8.0)
     hike (1.2.0)
@@ -133,7 +133,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.0.rc)
-  fb_graph
+  fb_graph (= 2.0.0.alpha)
   html5_validators
   jquery-rails
   openid_connect
