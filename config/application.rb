@@ -39,5 +39,9 @@ module OpenidConnectSample
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    config.middleware.use Rack::OAuth2::Server::Resource::Bearer, 'OpenID Connect' do |req|
+      AccessToken.valid.find_by_token(req.access_token) || req.invalid_token!
+    end
   end
 end

@@ -5,10 +5,10 @@ class Account < ActiveRecord::Base
   has_many :authorizations
   has_many :id_tokens
 
-  def to_response_object(scopes)
-    fb_profile = account.facebook.me
+  def to_response_object(scopes = [])
+    fb_profile = facebook.me
     user_info = OpenIDConnect::ResponseObject::UserInfo::OpenID.new(
-      id: account.id,
+      id: id,
       name: fb_profile.name,
       verified: fb_profile.verified
     )
