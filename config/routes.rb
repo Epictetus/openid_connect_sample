@@ -1,6 +1,4 @@
 OpenidConnectSample::Application.routes.draw do
-  resources :id_tokens
-
   resource :facebook,  only: :show
   resource :session,   only: :destroy
   resource :dashboard, only: :show

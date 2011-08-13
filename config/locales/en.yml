@@ -2,6 +2,19 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  # protocol
+  endpoint:
+    help: Protocol Endpoints
+    authorization: Authorization Endpoint
+    token: Token Endpoint
+    user_info: UserInfo Endpoint
+    introspection: Introspection Endpoint
+  # per model
+  client:
+    identifier: Client ID
+    secret: Client Secret
+  authorization:
+    scope: Requested Scopes
   # per controller
   site:
     title: OpenID Connect
@@ -11,6 +24,8 @@ en:
     description: You can use this app as sample OP for your RP or sample code for your OP.
   dashboards:
     title: Registered Clients
+    help:
+      title: Endpoint Info
   clients:
     new:
       title: Register New Client 
@@ -18,9 +33,6 @@ en:
     new:
       title: Authorize "%{client}"?
       description: After approved, you'll be redirected to "%{redirect_uri}"
-  # per model
-  client:
-    identifier: Client ID
-    secret: Client Secret
-  authorization:
-    scope: Requested Scopes
+  # others
+  help:
+    title: Help
