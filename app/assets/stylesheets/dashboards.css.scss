@@ -2,6 +2,7 @@
 
 .dashboards {
   .client {
+    position: relative;
     overflow: scroll;
     border: 2px solid $lightest_gray;
     border-radius: $default_radius;
@@ -16,6 +17,9 @@
       }
     }
     .destroy {
+      position: absolute;
+      bottom: 15px;
+      right: 18px;
       text-align: right;
       a {
         color: $dark_red;
