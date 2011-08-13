@@ -1,6 +1,6 @@
-class CreateAuthorizationCodes < ActiveRecord::Migration
+class CreateAuthorizations < ActiveRecord::Migration
   def change
-    create_table :authorization_codes do |t|
+    create_table :authorizations do |t|
       t.belongs_to :account, :client
       t.string :code, :redirect_uri
       t.datetime :expires_at

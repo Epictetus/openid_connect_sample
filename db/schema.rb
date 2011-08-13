@@ -33,14 +33,14 @@ ActiveRecord::Schema.define(:version => 20110812092230) do
     t.datetime "updated_at"
   end
 
-  create_table "authorization_code_scopes", :force => true do |t|
-    t.integer  "authorization_code_id"
+  create_table "authorization_scopes", :force => true do |t|
+    t.integer  "authorization_id"
     t.integer  "scope_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "authorization_codes", :force => true do |t|
+  create_table "authorizations", :force => true do |t|
     t.integer  "account_id"
     t.integer  "client_id"
     t.string   "code"
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20110812092230) do
     t.string   "identifier"
     t.string   "secret"
     t.string   "name"
-    t.string   "website"
     t.string   "redirect_uri"
     t.datetime "created_at"
     t.datetime "updated_at"

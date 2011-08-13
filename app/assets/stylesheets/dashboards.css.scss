@@ -1,23 +1,26 @@
 @import "common_variables";
 
 .dashboards {
-  .clients {
-    .client {
-      overflow: scroll;
-      border: 2px solid $lightest_gray;
-      border-radius: $default_radius;
-      margin: 10px;
-      padding: 15px 18px;
-      .redirect_uri {
-        font-size: .8em;
+  .client {
+    overflow: scroll;
+    border: 2px solid $lightest_gray;
+    border-radius: $default_radius;
+    margin: 10px;
+    padding: 15px 18px;
+    .redirect_uri {
+      font-size: .8em;
+    }
+    .authorize {
+      ul li {
+        display: inline-block;
       }
-      .destroy {
-        text-align: right;
-        a {
-          color: $dark_red;
-          &:hover {
-            color: $red;
-          }
+    }
+    .destroy {
+      text-align: right;
+      a {
+        color: $dark_red;
+        &:hover {
+          color: $red;
         }
       }
     }

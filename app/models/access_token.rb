@@ -11,12 +11,17 @@ class AccessToken < ActiveRecord::Base
   validates :token,      presence: true, uniqueness: true
   validates :expires_at, presence: true
 
+  def to_bearer_token
+    Rack::OAuth2::AccessToken::Bearer.new(
+      :access_token => token,
+      :expires_in   => (expires_at - Time.now.utc).to_i
+    )
+  end
+
   private
 
-  DEFAULT_LIFETIME = 24.hours
-
   def setup
-    self.token = SecureRandom.hex(32)
-    self.expires_at = DEFAULT_LIFETIME.from_now
+    self.token      = SecureRandom.hex(32)
+    self.expires_at = 24.hours.from_now
   end
 end

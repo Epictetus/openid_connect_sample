@@ -6,11 +6,20 @@ en:
   site:
     title: OpenID Connect
     description: Connect Now!
+  top:
+    title: OpenID Connect Sample OP
+    description: You can use this app as sample OP for your RP or sample code for your OP.
   dashboards:
     title: Registered Clients
   clients:
     new:
       title: Register New Client 
+  authorizations:
+    new:
+      title: Authorize This Client?
+      description:
+        If you approve this client access to your profile info, click "approve".
+        If not, click "deny".
   # per model
   client:
     identifier: Client ID

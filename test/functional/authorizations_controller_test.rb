@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AuthorizationCodeTest < ActiveSupport::TestCase
+class AuthorizationsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

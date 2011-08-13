@@ -1,4 +1,8 @@
-<fb:login-button length="long" onlogin="location.href = '<%= facebook_path %>'" scope="<%= Facebook.config[:scope] %>"></fb:login-button>
+<article>
+  <h2><%= 'top.title'.t %></h2>
+  <p><%= 'top.description'.t %></p>
+  <fb:login-button length="long" onlogin="location.href = '<%= facebook_path %>'" scope="<%= Facebook.config[:scope] %>"></fb:login-button>
+</article>
 
 <% content_for :top do %>
   <div id="fb-root"></div>

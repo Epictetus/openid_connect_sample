@@ -1,0 +1,22 @@
+<article>
+  <h2><%= 'authorizations.new.title'.t %></h2>
+  <p><%= 'authorizations.new.description'.t %></p>
+  <nav>
+    <ul>
+      <li>
+        <%= render 'authorizations/form', {
+          :client => @client,
+          :response_type => @response_type,
+          :action => :approve
+        } %>
+      </li>
+      <li>
+        <%= render 'authorizations/form', {
+          :client => @client,
+          :response_type => @response_type,
+          :action => :deny
+        } %>
+      </li>
+    </ul>
+  </nav>
+</article>

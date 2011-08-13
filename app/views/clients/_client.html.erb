@@ -11,6 +11,46 @@
       <dt><%= 'client.secret'.t %></dt>
       <dd><%= client.secret %></dd>
     </dl>
+    <nav class="authorize">
+      <h4><%= 'authorizations.new.title'.t %></h4>
+      <ul>
+        <li>
+          <%= form_tag new_authorization_path, method: :get do %>
+            <%= hidden_field_tag :client_id, client.identifier %>
+            <%= hidden_field_tag :response_type, 'id_token' %>
+            <%= submit_tag 'id_token' %>
+          <% end %>
+        </li>
+        <li>
+          <%= form_tag new_authorization_path, method: :get do %>
+            <%= hidden_field_tag :client_id, client.identifier %>
+            <%= hidden_field_tag :response_type, 'id_token token' %>
+            <%= submit_tag 'id_token+code' %>
+          <% end %>
+        </li>
+        <li>
+          <%= form_tag new_authorization_path, method: :get do %>
+            <%= hidden_field_tag :client_id, client.identifier %>
+            <%= hidden_field_tag :response_type, 'code' %>
+            <%= submit_tag 'code' %>
+          <% end %>
+        </li>
+        <li>
+          <%= form_tag new_authorization_path, method: :get do %>
+            <%= hidden_field_tag :client_id, client.identifier %>
+            <%= hidden_field_tag :response_type, 'token' %>
+            <%= submit_tag 'token' %>
+          <% end %>
+        </li>
+        <li>
+          <%= form_tag new_authorization_path, method: :get do %>
+            <%= hidden_field_tag :client_id, client.identifier %>
+            <%= hidden_field_tag :response_type, 'code token' %>
+            <%= submit_tag 'code+token' %>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
     <p class="destroy"><%= link_to 'destroy'.t, client_path(client), method: :delete %></p>
   </details>
 </article>

@@ -1,7 +1,7 @@
 class Client < ActiveRecord::Base
   belongs_to :account
   has_many :access_token
-  has_many :authorization_code
+  has_many :authorization
 
   before_validation :setup, on: :create
 
