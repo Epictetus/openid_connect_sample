@@ -2,12 +2,14 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc5'
 gem 'jquery-rails'
-gem 'fb_graph', '2.0.0.alpha'
-gem 'rack-oauth2'
-gem 'openid_connect'
+gem 'squeel'
+gem 'constant_cache'
 gem 'html5_validators'
 gem 'validate_url'
 gem 'validate_email'
+gem 'fb_graph', '2.0.0.alpha'
+gem 'rack-oauth2'
+gem 'openid_connect'
 
 group :assets do
   gem 'sass-rails', "~> 3.1.0.rc"

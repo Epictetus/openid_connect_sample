@@ -5,4 +5,7 @@ class Scope < ActiveRecord::Base
   has_many :authorization, through: :authorization_scopes
 
   validates :name, presence: true, uniqueness: true
+
+  include ConstantCache
+  caches_constants
 end

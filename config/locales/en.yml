@@ -22,3 +22,5 @@ en:
   client:
     identifier: Client ID
     secret: Client Secret
+  authorization:
+    scope: Requested Scopes

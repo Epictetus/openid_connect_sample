@@ -7,6 +7,10 @@ class IdToken < ActiveRecord::Base
   validates :account, presence: true
   validates :client,  presence: true
 
+  scope :valid, lambda {
+    where(:expires_at.gte => Time.now.utc)
+  }
+
   def to_response_object
     OpenIDConnect::ResponseObject::IdToken.new(
       :iss     => 'https://openid-connect.herokuapp.com',

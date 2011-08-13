@@ -6,6 +6,7 @@ module Authentication
   def self.included(klass)
     klass.send :include, Authentication::Helper
     klass.send :before_filter, :optional_authentication
+    klass.send :cattr_accessor, :required_scopes
     klass.send :rescue_from, AuthenticationRequired,  with: :authentication_required!
     klass.send :rescue_from, AnonymousAccessRequired, with: :anonymous_access_required!
   end
@@ -51,8 +52,9 @@ module Authentication
   end
 
   def require_access_token
-    @current_token = AccessToken.find_by_token request.env[Rack::OAuth2::Server::Resource::ACCESS_TOKEN]
+    @current_token = AccessToken.valid.find_by_token request.env[Rack::OAuth2::Server::Resource::ACCESS_TOKEN]
     raise Rack::OAuth2::Server::Resource::Bearer::Unauthorized unless @current_token
+    @current_token.accessible? @required_scopes
   end
 
   def authenticate(account)

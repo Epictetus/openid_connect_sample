@@ -9,6 +9,10 @@ class Authorization < ActiveRecord::Base
   validates :account, presence: true
   validates :client,  presence: true
 
+  scope :valid, lambda {
+    where { expires_at >= Time.now.utc }
+  }
+
   def expire!
     self.expires_at = Time.now
     self.save!

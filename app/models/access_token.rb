@@ -11,11 +11,21 @@ class AccessToken < ActiveRecord::Base
   validates :token,      presence: true, uniqueness: true
   validates :expires_at, presence: true
 
+  scope :valid, lambda {
+    where { expires_at >= Time.now.utc }
+  }
+
   def to_bearer_token
     Rack::OAuth2::AccessToken::Bearer.new(
       :access_token => token,
       :expires_in   => (expires_at - Time.now.utc).to_i
     )
+  end
+
+  def accessible?(scopes = nil)
+    Array(scopes).all? do |_scope_|
+      scopes.include? _scope_
+    end or raise Rack::OAuth2::Server::Resource::Bearer::Forbidden
   end
 
   private
