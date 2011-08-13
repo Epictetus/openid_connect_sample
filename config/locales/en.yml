@@ -13,6 +13,7 @@ en:
   client:
     identifier: Client ID
     secret: Client Secret
+    credentials: Credentials
   authorization:
     scope: Requested Scopes
   # per controller
