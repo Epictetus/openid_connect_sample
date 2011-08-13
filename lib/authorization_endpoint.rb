@@ -1,13 +1,13 @@
 require 'rack/oauth2/server/authorize/extension/code_and_token'
 
 class AuthorizationEndpoint
-  attr_accessor :app, :client, :response_type
+  attr_accessor :app, :client, :redirect_uri, :response_type
   delegate :call, to: :app
 
   def initialize(current_account, allow_approval = false, approved = false)
     @app = Rack::OAuth2::Server::Authorize.new do |req, res|
       @client = Client.find_by_identifier(req.client_id) || req.bad_request!
-      res.redirect_uri = req.verify_redirect_uri!(@client.redirect_uri)
+      res.redirect_uri = @redirect_uri = req.verify_redirect_uri!(@client.redirect_uri)
       if allow_approval
         if approved
           case req.response_type

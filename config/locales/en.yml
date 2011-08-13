@@ -16,10 +16,8 @@ en:
       title: Register New Client 
   authorizations:
     new:
-      title: Authorize This Client?
-      description:
-        If you approve this client access to your profile info, click "approve".
-        If not, click "deny".
+      title: Authorize "%{client}"?
+      description: After approved, you'll be redirected to "%{redirect_uri}"
   # per model
   client:
     identifier: Client ID

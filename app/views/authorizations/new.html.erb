@@ -1,12 +1,13 @@
 <article>
-  <h2><%= 'authorizations.new.title'.t %></h2>
-  <p><%= 'authorizations.new.description'.t %></p>
+  <h2><%= 'authorizations.new.title'.t(:client => @client.name) %></h2>
+  <p><%= 'authorizations.new.description'.t(:redirect_uri => @redirect_uri) %></p>
   <nav>
     <ul>
       <li>
         <%= render 'authorizations/form', {
           :client => @client,
           :response_type => @response_type,
+          :redirect_uri => @redirect_uri,
           :action => :approve
         } %>
       </li>
@@ -14,6 +15,7 @@
         <%= render 'authorizations/form', {
           :client => @client,
           :response_type => @response_type,
+          :redirect_uri => @redirect_uri,
           :action => :deny
         } %>
       </li>

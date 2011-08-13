@@ -20,8 +20,7 @@ class AuthorizationsController < ApplicationController
   def call_authorization_endpoint(allow_approval = false, approved = false)
     endpoint       = AuthorizationEndpoint.new current_account, allow_approval, approved
     rack_response  = *endpoint.call(request.env)
-    @client        = endpoint.client
-    @response_type = endpoint.response_type
+    @client, @response_type, @redirect_uri = endpoint.client, endpoint.response_type, endpoint.redirect_uri
     respond_as_rack_app *rack_response
   end
 end
