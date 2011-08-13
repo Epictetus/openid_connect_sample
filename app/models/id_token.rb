@@ -16,7 +16,8 @@ class IdToken < ActiveRecord::Base
       :iss     => 'https://openid-connect.herokuapp.com',
       :user_id => account.id,
       :aud     => client.identifier,
-      :exp     => expires_at.to_i
+      :exp     => expires_at.to_i,
+      :secret  => client.secret
     )
   end
 
