@@ -3,6 +3,9 @@
 h1, h2, h3, h4, strong, b {
   font-weight: 600;
 }
+section, article {
+  overflow: scroll;
+}
 a {
   color: $gray;
   text-decoration: none;
