@@ -32,8 +32,8 @@ en:
       title: Register New Client 
   authorizations:
     new:
-      title: Authorize "%{client}"?
-      description: After approved, you'll be redirected to "%{redirect_uri}"
+      title: Authorize %{client} ?
+      description: After approved, you will be redirected to %{redirect_uri}
   # others
   help:
     title: Help
