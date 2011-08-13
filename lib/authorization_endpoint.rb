@@ -34,9 +34,9 @@ class AuthorizationEndpoint
         res.code = authorization.code
       end
       if response_types.include? :token
-        access_token = current_account.access_tokens.create(:client_id => @client).to_bearer_token
+        access_token = current_account.access_tokens.create(:client_id => @client)
         access_token.scopes << @scopes
-        res.access_token = access_token
+        res.access_token = access_token.to_bearer_token
       end
       if response_types.include? :id_token
         res.id_token = current_account.id_tokens.create(:client_id => @client).to_response_object
