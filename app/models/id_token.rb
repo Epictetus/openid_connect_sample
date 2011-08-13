@@ -8,16 +8,16 @@ class IdToken < ActiveRecord::Base
   validates :client,  presence: true
 
   scope :valid, lambda {
-    where(:expires_at.gte => Time.now.utc)
+    where { expires_at >= Time.now.utc }
   }
 
   def to_response_object
     OpenIDConnect::ResponseObject::IdToken.new(
-      :iss     => 'https://openid-connect.herokuapp.com',
-      :user_id => account.id,
-      :aud     => client.identifier,
-      :exp     => expires_at.to_i,
-      :secret  => client.secret
+      iss: 'https://openid-connect.herokuapp.com',
+      user_id: account.id,
+      aud: client.identifier,
+      exp: expires_at.to_i,
+      secret: client.secret
     )
   end
 

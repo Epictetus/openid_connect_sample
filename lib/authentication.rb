@@ -54,6 +54,7 @@ module Authentication
   def require_access_token
     @current_token = AccessToken.valid.find_by_token request.env[Rack::OAuth2::Server::Resource::ACCESS_TOKEN]
     raise Rack::OAuth2::Server::Resource::Bearer::Unauthorized unless @current_token
+    Rails.logger.warn @required_scopes
     @current_token.accessible? @required_scopes
   end
 

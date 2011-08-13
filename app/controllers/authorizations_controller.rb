@@ -3,7 +3,7 @@ class AuthorizationsController < ApplicationController
 
   rescue_from Rack::OAuth2::Server::Authorize::BadRequest do |e|
     @error = e
-    render :error, :status => e.status
+    render :error, status: e.status
   end
 
   def new

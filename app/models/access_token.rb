@@ -17,8 +17,8 @@ class AccessToken < ActiveRecord::Base
 
   def to_bearer_token
     Rack::OAuth2::AccessToken::Bearer.new(
-      :access_token => token,
-      :expires_in   => (expires_at - Time.now.utc).to_i
+      access_token: token,
+      expires_in: (expires_at - Time.now.utc).to_i
     )
   end
 
