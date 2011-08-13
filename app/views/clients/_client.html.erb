@@ -19,6 +19,7 @@
             <%= form_tag new_authorization_path, method: :get do %>
               <%= hidden_field_tag :client_id, client.identifier %>
               <%= hidden_field_tag :response_type, response_type %>
+              <%= hidden_field_tag :scope, Scope.all.collect(&:name).join(' ') %>
               <%= submit_tag response_type %>
             <% end %>
           </li>
