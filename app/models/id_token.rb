@@ -7,7 +7,7 @@ class IdToken < ActiveRecord::Base
   validates :account, presence: true
   validates :client,  presence: true
 
-  def to_reponse_object
+  def to_response_object
     OpenIDConnect::ResponseObject::IdToken.new(
       :iss     => 'https://openid-connect.herokuapp.com',
       :user_id => account.id,
