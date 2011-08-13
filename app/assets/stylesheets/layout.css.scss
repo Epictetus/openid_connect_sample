@@ -13,6 +13,20 @@ a {
 ul {
   list-style: none;
 }
+details {
+  summary {
+    font-style: italic;
+    font-weight: bolder;
+  }
+}
+dl {
+  dt {
+    font-weight: bolder;
+  }
+  dd {
+    padding-left: 1em;
+  }
+}
 input {
   &[type=submit] {
     -webkit-box-shadow: $white 0px 0.08em 0.2em 1px inset;

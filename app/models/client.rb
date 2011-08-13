@@ -3,7 +3,13 @@ class Client < ActiveRecord::Base
   has_many :access_token
   has_many :authorization_code
 
-  before_create :asetup
+  before_validation :setup, on: :create
+
+  validates :account,      presence: true
+  validates :identifier,   presence: true, uniqueness: true
+  validates :secret,       presence: true
+  validates :redirect_uri, presence: true, url: true
+  validates :name,         presence: true
 
   def setup
     self.identifier = SecureRandom.hex(16)

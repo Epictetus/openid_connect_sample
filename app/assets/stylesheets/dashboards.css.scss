@@ -1,3 +1,25 @@
-// Place all the styles related to the dashboards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "common_variables";
+
+.dashboards {
+  .clients {
+    .client {
+      overflow: scroll;
+      border: 2px solid $lightest_gray;
+      border-radius: $default_radius;
+      margin: 10px;
+      padding: 15px 18px;
+      .redirect_uri {
+        font-size: .8em;
+      }
+      .destroy {
+        text-align: right;
+        a {
+          color: $dark_red;
+          &:hover {
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,1 +1,10 @@
-<%= link_to 'Logout', session_path, method: :delete %>
+<section class="clients">
+  <h2><%= 'dashboards.title'.t %></h2>
+  <%= render @clients %>
+</section>
+
+<nav>
+  <p>
+    <%= link_to 'clients.new.title'.t, new_client_path %>
+  </p>
+</nav>

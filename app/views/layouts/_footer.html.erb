@@ -1,3 +1,8 @@
 <footer class="page_footer">
-  <small>&copy; <%= link_to 'nov matake', 'http://github.com/nov'%></small>
+  <%= link_to 'logout'.t, session_path, method: :delete if authenticated? %>
+  <ul>
+    <li>
+      <small>&copy; <%= link_to 'nov matake', 'http://github.com/nov'%></small>
+    </li>
+  </ul>
 </footer>

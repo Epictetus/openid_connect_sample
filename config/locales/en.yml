@@ -2,7 +2,16 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  title:
-    site: OpenID Connect
-  description:
-    site: Connect Now!
+  # per controller
+  site:
+    title: OpenID Connect
+    description: Connect Now!
+  dashboards:
+    title: Registered Clients
+  clients:
+    new:
+      title: Register New Client 
+  # per model
+  client:
+    identifier: Client ID
+    secret: Client Secret

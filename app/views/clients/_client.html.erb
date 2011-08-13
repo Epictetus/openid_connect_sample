@@ -1,0 +1,16 @@
+<article class="client">
+  <h3>
+    <%= client.name %>
+    <span class="redirect_uri">(<%= client.redirect_uri %>)</span>
+  </h3>
+  <details>
+    <summary><%= 'client.credentials'.t %></summary>
+    <dl>
+      <dt><%= 'client.identifier'.t %></dt>
+      <dd><%= client.identifier %></dd>
+      <dt><%= 'client.secret'.t %></dt>
+      <dd><%= client.secret %></dd>
+    </dl>
+    <p class="destroy"><%= link_to 'destroy'.t, client_path(client), method: :delete %></p>
+  </details>
+</article>
