@@ -21,7 +21,7 @@ class AuthorizationEndpoint
               res.access_token = current_account.access_tokens.create(:client_id => @client).to_bearer_token
             end
             if response_types.include? :id_token
-              # TODO
+              res.id_token = current_account.id_tokens.create(:client_id => @client).to_response_object
             end
           else
             res.unsupported_response_type!
