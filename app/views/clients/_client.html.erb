@@ -12,7 +12,7 @@
       <dd><%= client.secret %></dd>
     </dl>
     <nav class="authorize">
-      <h4><%= 'authorizations.new.title'.t %></h4>
+      <h4><%= 'authorizations.new.title'.t(:client => client.name) %></h4>
       <ul>
         <% ['id_token', 'id_token token', 'code', 'token', 'code token'].each do |response_type| %>
           <li>
