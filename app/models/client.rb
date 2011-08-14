@@ -11,6 +11,8 @@ class Client < ActiveRecord::Base
   validates :redirect_uri, presence: true, url: true
   validates :name,         presence: true
 
+  private
+
   def setup
     self.identifier = SecureRandom.hex(16)
     self.secret     = SecureRandom.hex(32)
