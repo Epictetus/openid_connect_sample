@@ -8,6 +8,6 @@ class IdTokensController < ApplicationController
     id_token = current_user.id_tokens.where(
       client: current_token.client
     ).last
-    render json: id_token.to_response_object
+    render json: id_token.to_response_object(root_url)
   end
 end

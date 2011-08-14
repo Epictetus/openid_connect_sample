@@ -11,9 +11,9 @@ class IdToken < ActiveRecord::Base
     where { expires_at >= Time.now.utc }
   }
 
-  def to_response_object
+  def to_response_object(base_url)
     OpenIDConnect::ResponseObject::IdToken.new(
-      iss: 'https://openid-connect.herokuapp.com',
+      iss: base_url,
       user_id: account.id,
       aud: client.identifier,
       exp: expires_at.to_i,

@@ -28,17 +28,17 @@ class AuthorizationEndpoint
     when :code, :token, :id_token, [:code, :token], [:id_token, :token]
       response_types = Array(req.response_type)
       if response_types.include? :code
-        authorization = current_account.authorizations.create(client_id: @client, redirect_uri: res.redirect_uri)
+        authorization = current_account.authorizations.create!(client_id: @client, redirect_uri: res.redirect_uri)
         authorization.scopes << @scopes
         res.code = authorization.code
       end
       if response_types.include? :token
-        access_token = current_account.access_tokens.create(client_id: @client)
+        access_token = current_account.access_tokens.create!(client_id: @client)
         access_token.scopes << @scopes
         res.access_token = access_token.to_bearer_token
       end
       if response_types.include? :id_token
-        res.id_token = current_account.id_tokens.create(client_id: @client).to_response_object
+        res.id_token = current_account.id_tokens.create!(client_id: @client).to_response_object(root_url)
       end
     else
       res.unsupported_response_type!
