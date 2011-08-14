@@ -36,8 +36,10 @@ class Connect::Google < ActiveRecord::Base
     case res.status
     when 200
       JSON.parse(res.body).with_indifferent_access
+    when 401
+      raise Authentication::AuthenticationRequired.new('Access Token Invalid or Expired')
     else
-      raise 'API Access Failed'
+      raise Rack::OAuth2::Client::Error.new('API Access Faild')
     end
   end
 
