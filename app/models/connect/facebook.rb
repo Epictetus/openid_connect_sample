@@ -11,6 +11,15 @@ class Connect::Facebook < ActiveRecord::Base
   end
   memoize :me
 
+  def user_info
+    OpenIDConnect::ResponseObject::UserInfo::OpenID.new(
+      id:       account.id,
+      name:     me.name,
+      email:    me.email,
+      verified: me.verified
+    )
+  end
+
   class << self
     extend ActiveSupport::Memoizable
 

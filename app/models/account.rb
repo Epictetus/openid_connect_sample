@@ -7,17 +7,7 @@ class Account < ActiveRecord::Base
   has_many :id_tokens
 
   def to_response_object(scopes = [])
-    user_info = if google
-      google.user_info
-    else
-      profile = facebook.me
-      OpenIDConnect::ResponseObject::UserInfo::OpenID.new(
-        id:       id,
-        name:     profile.name,
-        email:    profile.email,
-        verified: profile.verified
-      )
-    end
+    user_info = (google || facebook).user_info
     user_info.email = nil unless scopes.include?(Scope::EMAIL)
     user_info
   end
