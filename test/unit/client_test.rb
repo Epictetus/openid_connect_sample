@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ClientTest < ActiveSupport::TestCase
-  test 'identifier and secret should be generated automatically' do
+  test 'setup' do
     client = accounts(:nov).clients.create!(
       name: 'Sample',
       redirect_uri: 'https://client.example.com/callback'
