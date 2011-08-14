@@ -1,5 +1,4 @@
 OpenidConnectSample::Application.routes.draw do
-  resource :facebook,  only: :show
   resource :session,   only: :destroy
   resource :dashboard, only: :show
 
@@ -9,6 +8,11 @@ OpenidConnectSample::Application.routes.draw do
 
   resource :id_token,  only: :show
   resource :user_info, only: :show
+
+  namespace :connect do
+    resource :facebook, only: :show
+    resource :google,   only: :show
+  end
 
   root to: 'top#index'
 end

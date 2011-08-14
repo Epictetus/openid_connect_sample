@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110813035027) do
+ActiveRecord::Schema.define(:version => 20110814035902) do
 
   create_table "access_token_scopes", :force => true do |t|
     t.integer  "access_token_id"
@@ -60,10 +60,19 @@ ActiveRecord::Schema.define(:version => 20110813035027) do
     t.datetime "updated_at"
   end
 
-  create_table "facebook", :force => true do |t|
+  create_table "connect_facebook", :force => true do |t|
     t.integer  "account_id"
     t.string   "identifier"
     t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "connect_google", :force => true do |t|
+    t.integer  "account_id"
+    t.string   "identifier"
+    t.string   "access_token"
+    t.string   "id_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

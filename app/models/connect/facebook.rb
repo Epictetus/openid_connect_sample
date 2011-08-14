@@ -1,4 +1,4 @@
-class Facebook < ActiveRecord::Base
+class Connect::Facebook < ActiveRecord::Base
   belongs_to :account
 
   validates :identifier,   presence: true, uniqueness: true
@@ -15,15 +15,14 @@ class Facebook < ActiveRecord::Base
     extend ActiveSupport::Memoizable
 
     def config
-      @config ||= if Rails.env.production?
-        {
+      config = YAML.load_file("#{Rails.root}/config/connect/facebook.yml")[Rails.env].symbolize_keys
+      if Rails.env.production?
+        config.merge!(
           client_id:     ENV['fb_client_id'],
-          client_secret: ENV['fb_client_secret'],
-          scope:         ENV['fb_scope']
-        }
-      else
-        YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env].symbolize_keys
+          client_secret: ENV['fb_client_secret']
+        )
       end
+      config
     end
     memoize :config
 
@@ -33,10 +32,10 @@ class Facebook < ActiveRecord::Base
 
     def authenticate(cookies)
       _auth_ = auth.from_cookie(cookies)
-      fb_user = find_or_initialize_by_identifier _auth_.user.identifier
-      fb_user.access_token = _auth_.access_token.access_token
-      fb_user.save!
-      fb_user.account || Account.create!(facebook: fb_user)
+      connect = find_or_initialize_by_identifier _auth_.user.identifier
+      connect.access_token = _auth_.access_token.access_token
+      connect.save!
+      connect.account || Account.create!(facebook: connect)
     end
   end
 end

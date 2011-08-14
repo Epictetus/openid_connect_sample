@@ -1,6 +1,6 @@
-class CreateFacebook < ActiveRecord::Migration
+class CreateConnectFacebook < ActiveRecord::Migration
   def change
-    create_table :facebook do |t|
+    create_table :connect_facebook do |t|
       t.belongs_to :account
       t.string :identifier, :access_token
       t.timestamps

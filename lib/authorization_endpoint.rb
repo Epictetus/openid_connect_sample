@@ -11,7 +11,6 @@ class AuthorizationEndpoint
       @scopes = req.scope.inject([]) do |scopes, scope|
         scopes << Scope.find_by_name(scope) or req.invalid_scope! "Unknown scope: #{scope}"
       end
-      Rails.logger.info @scopes
       if allow_approval
         if approved
           approved! current_account, req, res
