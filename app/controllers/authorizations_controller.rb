@@ -18,7 +18,7 @@ class AuthorizationsController < ApplicationController
 
   include RespondAsRackApp
   def call_authorization_endpoint(allow_approval = false, approved = false)
-    endpoint       = AuthorizationEndpoint.new current_account, allow_approval, approved
+    endpoint       = AuthorizationEndpoint.new current_account, root_url, allow_approval, approved
     rack_response  = *endpoint.call(request.env)
     @client, @response_type, @redirect_uri, @scopes = endpoint.client, endpoint.response_type, endpoint.redirect_uri, endpoint.scopes
     respond_as_rack_app *rack_response
