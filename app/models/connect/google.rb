@@ -8,6 +8,7 @@ class Connect::Google < ActiveRecord::Base
 
   def id_token
     hash = call_api self.class.config[:introspection_endpoint]
+    logger.info hash
     OpenIDConnect::ResponseObject::IdToken.new hash
   end
   memoize :id_token
