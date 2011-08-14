@@ -6,21 +6,19 @@ class Account < ActiveRecord::Base
   has_many :authorizations
   has_many :id_tokens
 
-  def profile
-    if facebook
-      facebook.me
-    else
-      google.user_info
-    end
-  end
-
   def to_response_object(scopes = [])
-    user_info = OpenIDConnect::ResponseObject::UserInfo::OpenID.new(
-      id: id,
-      name: profile.name,
-      verified: profile.verified
-    )
-    user_info.email = profile.email if scopes.include?(Scope::EMAIL)
+    user_info = if google
+      google.user_info
+    else
+      profile = facebook.me
+      OpenIDConnect::ResponseObject::UserInfo::OpenID.new(
+        id:       id,
+        name:     profile.name,
+        email:    profile.email
+        verified: profile.verified
+      )
+    end
+    user_info.email = nil unless scopes.include?(Scope::EMAIL)
     user_info
   end
 end
