@@ -14,7 +14,7 @@ class Account < ActiveRecord::Base
       OpenIDConnect::ResponseObject::UserInfo::OpenID.new(
         id:       id,
         name:     profile.name,
-        email:    profile.email
+        email:    profile.email,
         verified: profile.verified
       )
     end
